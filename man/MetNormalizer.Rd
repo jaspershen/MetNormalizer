@@ -42,7 +42,7 @@ dimensition1: \tab The data after normalization is given dimension or not. Defau
 Package: \tab MetNormalizer\cr
 Type: \tab Package\cr
 Version: \tab 1.1\cr
-Date: \tab 2016-04-22\cr
+Date: \tab 2016-04-27\cr
 License: \tab Nothing\cr
 Depends: \tab R (> = 3.1.1) \cr
 Imports: \tab e1071 \cr
