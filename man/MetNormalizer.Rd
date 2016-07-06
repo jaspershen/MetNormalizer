@@ -11,15 +11,15 @@ MetNormalizer is used to normalize large scale metabolomics data.
 }
 
 \usage{
-MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
-                          minfrac.qc = 0.8, minfrac.sample = 0.5, filter = "no",
-                          normalization.method = "svr",
-                          optimization = TRUE, begin = 0.5, end = 1,step = 0.2,
-                          ##loess parameters
-                          multiple = 5,
-                          ##svr parameters
-                          rerun.loess = TRUE, rerun.svr = TRUE,
-                          peakplot=TRUE, datastyle = "tof", dimension1 = TRUE, user="other")
+MetNormalizer(filename = "Metabolomics data", polarity = "none",
+              minfrac.qc = 0.8, minfrac.sample = 0.5, filter = "no",
+              normalization.method = "svr",
+              optimization = TRUE, begin = 0.5, end = 1,step = 0.2,
+              ##loess parameters
+              multiple = 5,
+              ##svr parameters
+              rerun.loess = TRUE, rerun.svr = TRUE,
+              peakplot=TRUE, datastyle = "tof", dimension1 = TRUE, user="other")
 }
 \arguments{
 \tabular{ll}{
