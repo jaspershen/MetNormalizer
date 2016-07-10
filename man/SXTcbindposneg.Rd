@@ -1,17 +1,17 @@
-\name{SXTgetdata}
-\alias{SXTgetdata}
-\alias{SXTgetdata}
+\name{SXTcbindposneg}
+\alias{SXTcbindposneg}
+\alias{SXTcbindposneg}
 \docType{package}
 \title{
-SXTgetdata
+SXTcbindposneg
 }
 
 \description{
-SXTgetdata is used to split data into tags, subject and QC.
+SXTcbindposneg is used to combine pos and neg data together.
 }
 
 \usage{
-SXTgetdata <- function(filename = "Metabolomics data", polarity = "none",
+SXTcbindposneg <- function(filename = "Metabolomics data", polarity = "none",
                           minfrac.qc = 0.8, minfrac.sample = 0.5, filter = "no",
                           normalization.method = "svr",
                           optimization = TRUE, begin = 0.5, end = 1,step = 0.2,
@@ -39,7 +39,7 @@ dimensition1: \tab The data after normalization is given dimension or not. Defau
 
 \details{
 \tabular{ll}{
-Package: \tab SXTgetdata\cr
+Package: \tab SXTcbindposneg\cr
 Type: \tab Package\cr
 Version: \tab 1.1\cr
 Date: \tab 2016-04-27\cr
