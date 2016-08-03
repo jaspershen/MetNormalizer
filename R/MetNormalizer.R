@@ -736,12 +736,11 @@ SXTsvrNor <- function(sample = sample,
              # Sys.sleep(1)
              QC.nor <- NULL
              sample.nor <- NULL
-
-             QC.cor <-
-               cor(QC,method = "spearman")#not normal distribution, so use spearman correction
+# browser()
+            data <- rbind(sample, QC)
+             QC.cor <- cor(sample, method = "spearman")#not normal distribution, so use spearman correction
              for (i in 1:ncol(QC)) {
-               cor.peak <-
-                 as.numeric(which(QC.cor[,i] %in% rev(sort(QC.cor[-i,i]))[1:as.numeric(multiple)]))
+               cor.peak <- as.numeric(which(QC.cor[,i] %in% rev(sort(QC.cor[-i,i]))[1:as.numeric(multiple)]))
 
                if (multiple != 1) {
                  svr.reg <- svm(QC[,cor.peak],QC[,i])

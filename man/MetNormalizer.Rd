@@ -41,12 +41,13 @@ dimensition1: \tab The data after normalization is given dimension or not. Defau
 \tabular{ll}{
 Package: \tab MetNormalizer\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2016-04-27\cr
+Version: \tab 1.2\cr
+Date: \tab 2016-08-03\cr
 License: \tab Nothing\cr
 Depends: \tab R (> = 3.1.1) \cr
 Imports: \tab e1071 \cr
 Version 1.1: \tab(1) The data after normalization can be given dimension. See the Argument: dimensition1. (2) The injection order can be got from a new file named as "worklist.csv". See the example. (3) It can process positive and negative data together. See the Argument: polarity.\cr
+Version 1.2: \tab Change the SVR multiple feature selection method.\cr
 }
 }
 
