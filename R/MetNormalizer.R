@@ -1,5 +1,4 @@
-MetNormalizer <-
-  function(filename = "Metabolomics data", polarity = "none",
+MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
            minfrac.qc = 0.8, minfrac.sample = 0.5, filter = "no",
            normalization.method = "svr",
            optimization = TRUE, begin = 0.5, end = 1,step = 0.2,
@@ -738,7 +737,7 @@ SXTsvrNor <- function(sample = sample,
              sample.nor <- NULL
 # browser()
             data <- rbind(sample, QC)
-             QC.cor <- cor(sample, method = "spearman")#not normal distribution, so use spearman correction
+             QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
              for (i in 1:ncol(QC)) {
                cor.peak <- as.numeric(which(QC.cor[,i] %in% rev(sort(QC.cor[-i,i]))[1:as.numeric(multiple)]))
 
