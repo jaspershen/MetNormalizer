@@ -1,7 +1,7 @@
 name: "profvis"
 output_dir: '.'
 navbar:
-  title: "Profvis"
+  title: "MetNormalizer"
   type: inverse
   left:
     - text: "Home"
