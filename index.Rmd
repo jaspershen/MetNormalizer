@@ -32,7 +32,7 @@ Suppose you make a loop run 5 times faster. That sounds like a huge improvement,
 
 ## Getting started
 
-To install **profvis** from CRAN:
+To install **MetNormalizer** from CRAN:
 
 ```{r eval=FALSE}
 install.packages("profvis")
