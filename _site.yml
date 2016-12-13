@@ -14,7 +14,7 @@ navbar:
       href: faq.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/rstudio/profvis/
+      href: https://github.com/jaspershen/MetNormalizer
 output:
   html_document:
     theme: cosmo
