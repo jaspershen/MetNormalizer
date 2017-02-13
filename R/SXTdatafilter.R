@@ -7,7 +7,7 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
                           path = NULL
                           #parameters setting
 ) {
-  # browser()
+
   #if all is TRUE, the not annotated peak are also regarded as monoisotopes
   if (is.null(path)) {
     path <- getwd()
@@ -55,7 +55,7 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
   minfrac.filter <- function(x, minfrac = 0.8) {
     ifelse(sum(x != 0,na.rm = T) / length(x) >= minfrac,!0,!1)
   }
-  # browser()
+
   #use qc to filter sample, tags and qc
   sample <-
     sample[,apply(qc,2,function(x) {

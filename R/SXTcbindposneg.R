@@ -5,7 +5,7 @@ SXTcbindposneg <- function(filename = "SXT data",path = NULL)
     path <- getwd()
   }
   file <- dir(path)
-  # browser()
+
   file.pos <- file[grep("POS",file)]
   file.neg <- file[grep("NEG",file)]
   pos <- load(file.path(path,file.pos))

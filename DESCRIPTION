@@ -3,7 +3,7 @@ Type: Package
 Title: MetNormalizer
 Version: 1.2
 Date: 2016-08-03
-Author: Xiaotao Shen, Zhengjiang Zhu
+Author: Xiaotao Shen, Zheng-Jiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: MetNormalizer is used to normalize the large scale metabolomics data.
 License: No

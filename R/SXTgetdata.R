@@ -2,7 +2,7 @@
 SXTgetdata <-
   function(data, filename = "SXT data", polarity = "positive",
            path = NULL, user = "other",datastyle = "tof") {
-    # browser()
+
     if (is.null(path)) {
       path <- getwd()
     }

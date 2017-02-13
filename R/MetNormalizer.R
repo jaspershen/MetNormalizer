@@ -12,7 +12,6 @@ MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
       multiple <- 1
     }
 
-    # browser()
     options(warn = -1)
     temp <- dir()
 
@@ -280,7 +279,6 @@ SXTloessNor <- function(sample = sample,
                sample.nor1[is.infinite(unlist(sample.nor1))] <- 0
                sample.nor1[is.na(unlist(sample.nor1))] <- 0
                sample.nor1[which(unlist(sample.nor1) < 0)] <- 0
-               #browser()
 
                QC.nor <- cbind(QC.nor,QC.nor1)
                sample.nor <- cbind(sample.nor,sample.nor1)
@@ -704,7 +702,7 @@ SXTsvrNor <- function(sample = sample,
            datastyle = "tof",dimension1 = TRUE
            #parameters setting
            ){
-           # browser()
+
            ######is there the e1071?
            packages <- library()[[2]][,1]
            if (any(packages == "e1071")) {
@@ -735,7 +733,7 @@ SXTsvrNor <- function(sample = sample,
              # Sys.sleep(1)
              QC.nor <- NULL
              sample.nor <- NULL
-# browser()
+
             data <- rbind(sample, QC)
              QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
              for (i in 1:ncol(QC)) {
@@ -800,7 +798,6 @@ SXTsvrNor <- function(sample = sample,
              colnames(QC.nor) <- colnames(sample.nor) <- tags["name",]
            }
 
-           # browser()
            save(QC.nor,sample.nor,file = file.path(path1,"normalization file"))
 
 
@@ -877,7 +874,7 @@ peakplot5 <-
            sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
              sample.nor.rsd,
            QC.nor.rsd = QC.nor.rsd) {
-    # browser()
+
     cat("Drawing the peak plots: %\n")
     if (is.null(path)) {
       path = getwd()
@@ -947,8 +944,7 @@ peakplot6 <-
     if (is.null(path)) {
       path = getwd()
     }
-    # Sys.sleep(1)
-    # browser()
+
     par(mar = c(5,5,4,2))
     for (i in 1:ncol(sample)) {
       tiff(file.path(path,sprintf('Peak %s plot.tiff',tags["name",i])),width =
