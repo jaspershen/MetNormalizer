@@ -8,4 +8,4 @@ Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: MetNormalizer is used to normalize the large scale metabolomics data.
 License: No
 LazyData: TRUE
-Depends: R, e1071
+Depends: R, e1071,readr

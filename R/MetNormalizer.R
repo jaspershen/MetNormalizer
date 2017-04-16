@@ -1,13 +1,23 @@
-MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
-           minfrac.qc = 0.8, minfrac.sample = 0.5, filter = "no",
-           normalization.method = "svr",
-           optimization = TRUE, begin = 0.5, end = 1,step = 0.2,
-           ##loess parameters
-           multiple = 5,
-           ##svr parameters
-           rerun.loess = TRUE, rerun.svr = TRUE,
-           peakplot = TRUE, datastyle = "tof", dimension1 = TRUE, user =
-             "other") {
+MetNormalizer <- function(filename = "Metabolomics data",
+                          polarity = "none",
+                          minfrac.qc = 0.8,
+                          minfrac.sample = 0.5,
+                          filter = "no",
+                          normalization.method = "svr",
+                          optimization = TRUE,
+                          begin = 0.5,
+                          end = 1,
+                          step = 0.2,
+                          ##loess parameters
+                          multiple = 5,
+                          ##svr parameters
+                          rerun.loess = TRUE,
+                          rerun.svr = TRUE,
+                          peakplot = TRUE,
+                          datastyle = "tof",
+                          dimension1 = TRUE, user = "other"
+                          ) {
+  # browser()
     if (datastyle == "mrm") {
       multiple <- 1
     }
@@ -48,7 +58,7 @@ MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
         cat("Importing POS data...\n")
         if (substr(file.pos,nchar(file.pos) - 2,nchar(file.pos)) == "csv")
         {
-          pos.data <- read.csv(file.pos)
+          pos.data <- readr::read_csv(file.pos)
         }
         else
         {
@@ -59,7 +69,7 @@ MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
         cat("Importing NEG data...\n")
         if (substr(file.neg,nchar(file.neg) - 2,nchar(file.neg)) == "csv")
         {
-          neg.data <- read.csv(file.neg)
+          neg.data <- readr::read_csv(file.neg)
         }
         else
         {
@@ -130,7 +140,8 @@ MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
           stop(paste("There are",length(file),"files,not one file!"))
         }
         cat("Importing data...\n")
-        data <- read.csv(file)
+        data <- readr::read_csv(file)
+        data <- as.matrix(data)
         cat("Getting data...\n")
         SXTgetdata(
           data = data,filename = filename, polarity = polarity, path = path, user = user,
@@ -167,10 +178,10 @@ MetNormalizer <- function(filename = "Metabolomics data", polarity = "none",
     if (normalization.method == "svr") {
       cat("SVR normalization...\n")
       # Sys.sleep(time = 1)
-      SXTsvrNor(
+      SXTsvrNor1(
         sample = sample,QC = qc,tags = tags, sample.order = sampleorder,
         QC.order = qcorder, multiple = multiple, path = path,
-        rerun = rerun.svr, peakplot = peakplot, datastyle = datastyle,
+        peakplot = peakplot, datastyle = datastyle,
         dimension1 = dimension1
       )
     }
@@ -702,7 +713,7 @@ SXTsvrNor <- function(sample = sample,
            datastyle = "tof",dimension1 = TRUE
            #parameters setting
            ){
-
+browser()
            ######is there the e1071?
            packages <- library()[[2]][,1]
            if (any(packages == "e1071")) {
