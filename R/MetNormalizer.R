@@ -185,10 +185,10 @@ setGeneric(name = "MetNormalizer",
                # } else {
                  file <- dir(path)######
                  # if (user == "other") {
-                   # if (length(grep("worklist",file)) == 0) {
-                   #   stop("There are no worklist file.")
+                   # if (length(grep("sample.info",file)) == 0) {
+                   #   stop("There are no sample.info file.")
                    # }
-                   file <- file[-grep("worklist",file)]
+                   file <- file[-grep("sample.info",file)]
                  # }
 
                  cat("Importing data...\n")
@@ -885,11 +885,11 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <-
-      read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE,
+    sample.info <-
+      read.csv(file.path(path,"sample.info.csv"),stringsAsFactors = FALSE,
                check.names = FALSE)
-    name <- worklist[,1]
-    ###judge if worklist name contains POS or NEG
+    name <- sample.info[,1]
+    ###judge if sample.info name contains POS or NEG
     pos.have <- length(grep("POS", toupper(name)))
     neg.have <- length(grep("NEG", toupper(name)))
 
@@ -902,8 +902,8 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
       }
     }
 
-    all.order <- as.numeric(worklist[,2])
-    type <- worklist[,3]
+    all.order <- as.numeric(sample.info[,2])
+    type <- sample.info[,3]
     qc.index <- grep("QC",type)
     sample.index <- grep("Subject",type)
     sample.name <- name[sample.index]
@@ -2045,10 +2045,10 @@ SXTsvrNor1 <- function(sample,
 #         cat("Positive & Negative\n")
 #         file <- dir()[!file.info(dir())$isdir]
 #         if (user == "other") {
-#           if (length(grep("worklist",file)) == 0) {
-#             stop("There are no worklist file!")
+#           if (length(grep("sample.info",file)) == 0) {
+#             stop("There are no sample.info file!")
 #           }
-#           file <- file[-grep("worklist",file)]
+#           file <- file[-grep("sample.info",file)]
 #         }
 #
 #         if (length(file) != 2) {
@@ -2136,10 +2136,10 @@ SXTsvrNor1 <- function(sample,
 #         file <- dir()[!file.info(dir())$isdir]
 #
 #         if (user == "other") {
-#           if (length(grep("worklist",file)) == 0) {
-#             stop("There are no worklist file!")
+#           if (length(grep("sample.info",file)) == 0) {
+#             stop("There are no sample.info file!")
 #           }
-#           file <- file[-grep("worklist",file)]
+#           file <- file[-grep("sample.info",file)]
 #         }
 #
 #         if (length(file) != 1) {

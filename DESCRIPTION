@@ -9,3 +9,4 @@ Description: MetNormalizer is used to normalize the large scale metabolomics dat
 License: No
 LazyData: TRUE
 Depends: R, e1071,readr
+RoxygenNote: 6.0.1

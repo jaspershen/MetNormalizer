@@ -143,12 +143,12 @@ setGeneric(name = "checkData",
 
 
 
-             if(colnames(sample.info)[4] != "batch"){
-               cat("Error: The second column name of sample.info must be 'batch'. Please check it.\n")
-               sample.info.record <- c(sample.info.record, "Error")
-             }else{
-               sample.info.record <- c(sample.info.record, "OK")
-             }
+             # if(colnames(sample.info)[4] != "batch"){
+             #   cat("Error: The second column name of sample.info must be 'batch'. Please check it.\n")
+             #   sample.info.record <- c(sample.info.record, "Error")
+             # }else{
+             #   sample.info.record <- c(sample.info.record, "OK")
+             # }
 
              if(sum(is.na(sample.info)) > 0){
                cat("Error: There are", sum(is.na(sample.info)), "NAs in you sample.info.\n")
