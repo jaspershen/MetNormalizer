@@ -1,0 +1,10 @@
+pandoc: 2.7.2
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  contact_us: contact_us.html
+  MetNormalizer: MetNormalizer.html
+urls:
+  reference: https://jaspershen.github.io/MetNormalizer//reference
+  article: https://jaspershen.github.io/MetNormalizer//articles
+

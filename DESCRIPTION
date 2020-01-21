@@ -1,12 +1,69 @@
 Package: MetNormalizer
 Type: Package
 Title: MetNormalizer
-Version: 1.3.01
-Date: 2017-12-27
-Author: Xiaotao Shen, Zheng-Jiang Zhu
-Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
-Description: MetNormalizer is used to normalize the large scale metabolomics data.
-License: No
-LazyData: TRUE
-Depends: R, e1071,readr
-RoxygenNote: 6.0.1
+Version: 1.3.02
+Date: 2020-01-20
+Authors@R: c(
+    person("Xiaotao", "Shen", , "shenxt1990@163.com", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-9608-9964")
+    )
+    )
+Maintainer: Xiaotao Shen<shenxt1990@163.com>
+Description: This package is used to do data normalization for metabolomics.
+LazyData: true
+Depends: R (>= 3.5)
+Imports:
+    BiocParallel,
+    cli,
+    crayon,
+    clisymbols,
+    dplyr,
+    e1071,
+    ggplot2,
+    ggsci,
+    ggfortify,
+    graphics,
+    grDevices,
+    pcaMethods,
+    impute,
+    missForest,
+    magrittr,
+    scatterplot3d,
+    pbapply,
+    pheatmap,
+    plyr,
+    purrr,
+    beeswarm,
+    ellipse,
+    patchwork,
+    pls,
+    plsdepot,
+    pROC,
+    snow,
+    tidyverse,
+    methods,
+    MSnbase,
+    mzR,
+    pander,
+    utils,
+    rvest,
+    stats,
+    readr,
+    readxl,
+    plotly,
+    stringr,
+    tibble,
+    tidyr
+License: GPL-2 | file LICENSE
+URL: https://github.com/jaspershen/MetNormalizer
+RoxygenNote: 7.0.2
+Suggests: knitr,
+    rmarkdown,
+    BiocStyle,
+    RUnit,
+    BiocGenerics
+VignetteBuilder: knitr
+Note:
+biocViews: Metabolomics, MassSpectrometry, Data processing, Data analysis.
+Encoding: UTF-8
+

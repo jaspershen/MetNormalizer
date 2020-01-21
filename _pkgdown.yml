@@ -1,0 +1,63 @@
+url: https://jaspershen.github.io/MetNormalizer/
+
+
+home:
+  strip_header: true
+  title: MetNormalizer
+  links:
+  - text: Find me
+    href: https://shenxt.info/
+
+development:
+  mode: auto
+  version_label: danger
+  version_tooltip: "Under development"
+
+template:
+  params:
+    docsearch:
+      api_key: 2f09495997a50f5008bc92fa73c5552d
+      index_name: metidentify
+    bootswatch: darkly
+    ganalytics: UA-000000-01
+
+navbar:
+  type: inverse
+  structure:
+    left: [home, references, articles, news, links, contact]
+    right: [github, twitter]
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Category A
+      - text: Instruction of MetNormalizer
+        href: articles/MetNormalizer.html
+      - text: -------
+      - text: "Category B"
+      - text: Test
+        href: https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: https://twitter.com/JasperShen1990
+    contact:
+      text: Contact us
+      href: articles/contact_us.html
+    links:
+      text: Links
+      menu:
+      - text: "Snyder lab"
+        href: http://snyderlab.stanford.edu/
+      - text: "Shen blog"
+        href: https://www.shenxt.info/
+    news:
+      text: News
+      menu:
+      - text: "Blog posts"
+      - text: "Version 0.0.1"
+        href: articles/MetNormalizer.html
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html
+toc:
+  depth: 3

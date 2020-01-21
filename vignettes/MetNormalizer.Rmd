@@ -1,0 +1,82 @@
+---
+title: "MetNormalizer"
+author:
+- name: Xiaotao Shen (https://www.shenxt.info/)
+- affiliation: School of Medicine, Stanford University
+  url: http://shenxt.info/
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    toc: no
+  pdf_document:
+    toc: no
+vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
+  \n"
+---
+
+```{r, include = FALSE, echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  # fig.width = 7, 
+  # fig.height = 5,
+  warning = FALSE,
+  message = TRUE
+)
+```
+
+
+# Installation
+
+---
+
+You can install `MetNormalizer` from [Github](https://github.com/jaspershen/MetNormalizer).
+
+```{r, cache=TRUE, eval=FALSE}
+# Install `MetNormalizer` from GitHub
+if(!require(devtools)){
+install.packages("devtools")
+}
+devtools::install_github("jaspershen/MetNormalizer")
+```
+
+We use the demo data in `demoData` package to show how to use `MetNormalizer`. Please install it first.
+
+```{r,eval=FALSE,warning=FALSE, R.options=""}
+devtools::install_github("jaspershen/demoData")
+```
+
+# Usage
+
+---
+
+## Demo data
+
+```{r, cache=TRUE, eval=TRUE, warning=FALSE}
+library(demoData)
+library(MetNormalizer)
+path <- system.file("MetNormalizer", package = "demoData")
+file.copy(from = path, to = ".", overwrite = TRUE, recursive = TRUE)
+new.path <- file.path("./MetNormalizer")
+```
+
+## Run `MetNormalizer`
+
+```{r, cache=TRUE, eval=TRUE, warning=TRUE}
+MetNormalizer(
+  ms1.data.name = "data.csv",
+  sample.info.name = "sample.info.csv",
+  minfrac.qc = 0,
+  minfrac.sample = 0,
+  optimization = TRUE,
+  begin = 0.5,
+  end = 1,
+  step = 0.2,
+  multiple = 5,
+  threads = 4,
+  path = new.path
+)
+```
+
+All the results will be placed in the folder named as `svr_normalization_result`.
