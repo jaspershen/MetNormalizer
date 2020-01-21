@@ -9,10 +9,6 @@
 #' @export
 #'
 
-
-# sxtTools::setwd_project()
-# setwd("demo_data/")
-
 setGeneric(
   name = "checkData",
   def = function(data = "data.csv",

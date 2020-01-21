@@ -142,69 +142,54 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
 <div id="metnormalizer" class="section level1">
 
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>MetNormalizer is used to normalize large scale metabolomics data. weblin:<a href="http://link.springer.com/article/10.1007/s11306-016-1026-5?no-access=true" class="uri">http://link.springer.com/article/10.1007/s11306-016-1026-5?no-access=true</a></p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<pre><code>if(!require(devtools)){
+<div id="installation" class="section level1">
+<h1 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h1>
+<hr>
+<p>You can install <code>MetNormalizer</code> from <a href="https://github.com/jaspershen/MetNormalizer">Github</a>.</p>
+<pre><code># Install `MetNormalizer` from GitHub
+if(!require(devtools)){
 install.packages("devtools")
 }
 devtools::install_github("jaspershen/MetNormalizer")</code></pre>
+<p>We use the demo data in <code>demoData</code> package to show how to use <code>MetNormalizer</code>. Please install it first.</p>
+<p><code>{r,eval=FALSE,warning=FALSE, R.options=""} devtools::install_github("jaspershen/demoData")</code></p>
 </div>
-<div id="usage" class="section level2">
+<div id="usage" class="section level1">
+<h1 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h1>
+<hr>
+<div id="demo-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>The new version (1.3.01) needs two files named ‘data.csv’ and ‘sample.info.csv’.</p>
-<div id="data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#data" class="anchor"></a>data</h3>
-<p>Data is used to provied the metabolomics data. This must be a .csv format and named as ‘data.csv’. The first column must be the names of peaks (named as ‘name’). The second column must be the mass to change of peaks (named as ‘mz’). The third column must be retention time of peaks (named as ‘rt’). Other columns are intensity of samples.</p>
-<p><img src="http://p6udbpr20.bkt.clouddn.com/data.png" alt="Figure 1 Data"></p>
-</div>
-<div id="sampleinfo" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sampleinfo" class="anchor"></a>sample.info</h3>
-<p>sample.info is used to provied the information of samples. This must be a .csv format and named as ‘sample.info.csv’. The first column must be the names of samples (named as ‘sample.name’). The second column must be the injection order of samples (named as ‘injection.order’). The third column must be class of samples (named as ‘class’, and subject samples should be noted as ‘Subject’ and QC samples should be noted as ‘QC’).</p>
-<p><img src="http://p6udbpr20.bkt.clouddn.com/worklist.png" alt="Figure 2 sample.info"></p>
-</div>
-<div id="note" class="section level3">
-<h3 class="hasAnchor">
-<a href="#note" class="anchor"></a><strong><font color="red">Note</font></strong>
-</h3>
-<ul>
-<li>The sample names in data.csv and sample.info.csv must be completely same.</li>
-<li>You can use ‘.’ in your sample names, please don’t use space, ‘-’ or ’_’.</li>
-<li>The begining of sample names must be letter.</li>
-<li>The class in sample.info.csv must be <strong>“Subject”</strong> or <strong>“QC”</strong>. Please note the capitalization.</li>
-</ul>
-</div>
-<div id="running" class="section level3">
-<h3 class="hasAnchor">
-<a href="#running" class="anchor"></a>Running</h3>
-<p>Please place the ‘data.csv’ and ‘sample.info.csv’ in a folder and set this folder as your work directory.</p>
-<pre><code>setwd("xxx\xxx\xxx")
+<a href="#demo-data" class="anchor"></a>Demo data</h2>
+<pre><code>library(demoData)
 library(MetNormalizer)
-MetNormalizer(minfrac.qc = 0,
-              minfrac.sample = 0, 
-              normalization.method = "svr",
-              multiple = 5)</code></pre>
+path &lt;- system.file("MetNormalizer", package = "demoData")
+file.copy(from = path, to = ".", overwrite = TRUE, recursive = TRUE)
+new.path &lt;- file.path("./MetNormalizer")</code></pre>
 </div>
-<div id="parameters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#parameters" class="anchor"></a>Parameters</h3>
-<ul>
-<li>minfrac.qc: If the zero value rate of one peaks in all the QC samples is bigger than 1- minfrac.qc, this peak will be removed from the dataset. Default is 0, this means no peaks will be removed.</li>
-<li>minfrac.sample: If the zero value rate of one peaks in all the subject samples is bigger than 1- minfrac.sample, this peak will be removed from the dataset. Default is 0, this means no peaks will be removed.</li>
-</ul>
+<div id="run-metnormalizer" class="section level2">
+<h2 class="hasAnchor">
+<a href="#run-metnormalizer" class="anchor"></a>Run <code>MetNormalizer</code>
+</h2>
+<pre><code>metNor(
+  ms1.data.name = "data.csv",
+  sample.info.name = "sample.info.csv",
+  minfrac.qc = 0,
+  minfrac.sample = 0,
+  optimization = TRUE,
+  multiple = 5,
+  threads = 4,
+  path = new.path
+)</code></pre>
+<p>All the results will be placed in the folder named as <code>svr_normalization_result</code>.</p>
 </div>
 </div>
-</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

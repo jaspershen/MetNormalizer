@@ -1,6 +1,4 @@
-#' Normalize data using different normalization methods.
-#'
-#' @title MetNormalizer
+#' @title metNor
 #' @description Normalize data using different normalization methods.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
@@ -8,43 +6,23 @@
 #' @param sample.info.name sample.info name. Default is "sample.info.csv"
 #' @param minfrac.qc Default is 0.
 #' @param minfrac.sample Default is 0.
-#' loess: LOESS normalization; all: SVR&LOESS.Default is svr.
 #' @param optimization Parameter optimization or not?.Default is TRUE.
-#' @param begin The begin of span to optimize.
-#' @param end The end of span to optimize.
-#' @param step The step for begin to end.
 #' @param multiple If multiple = 1, the svr will be built using injection order.
 #' If multiple >= 2, the svr is built using top mutiple peaks correlated peaks.
-#'  For tof data, default is 5, for mrm data, default is 1.
+#' For tof data, default is 5, for mrm data, default is 1.
 #' @param threads Number of thread.
 #' @param path Directory
-#' @return peakplot: A folder contains all the peaks plot before and sfter
-#' SVR normalization.
-#' @return data svr nor.csv: A csv data after SVR normalization.
-#' @return normalization file: The intermediate data.
-#' @return RSD compare plot.png: A figure show the comparing of
-#' RSDs of peaks before and after SVR normalization.
-#' @return RSD distribution.csv: RSD distributions of data before
-#' and after SVR normalization.
-#' @return RSD distribution.png: A figure show the RSD distributions
-#' before and after SVR normalization.
-#' @return rsd.change.csv: A table show the RSDs of peaks before and
-#' after SVR normalization.
-#' @import crayon
-#' @import tidyverse
+#' @export
 #' @importFrom magrittr %>%
+#' @import dplyr
 
 setGeneric(
-  name = "MetNormalizer",
+  name = "metNor",
   def = function(ms1.data.name = "data.csv",
                  sample.info.name = "sample.info.csv",
                  minfrac.qc = 0,
                  minfrac.sample = 0,
                  optimization = TRUE,
-                 begin = 0.5,
-                 end = 1,
-                 step = 0.2,
-                 ##loess parameters
                  multiple = 5,
                  threads = 3,
                  path = ".") {
@@ -66,7 +44,7 @@ setGeneric(
       as.data.frame()
 
     sample.info <-
-      readr::read_csv("sample.info.csv", col_types = readr::cols()) %>%
+      readr::read_csv(file.path(path, "sample.info.csv"), col_types = readr::cols()) %>%
       dplyr::arrange(injection.order)
 
     sample.order <-
@@ -83,7 +61,7 @@ setGeneric(
 
     tags <-
       data %>%
-      dplyr::select(-one_of(sample.info$sample.name))
+      dplyr::select(-dplyr::one_of(sample.info$sample.name))
 
     sample.name <-
       sample.info %>%
@@ -135,44 +113,44 @@ setGeneric(
 
     ##########normalization
 
-      # cat(crayon::green("LOESS normalization...\n"))
-      # SXTloessNor(
-      #   sample = sample,
-      #   QC = qc,
-      #   tags = tags,
-      #   sample.order = sample.order,
-      #   QC.order = qc.order,
-      #   optimization = optimization,
-      #   begin = begin,
-      #   end = end,
-      #   step = step,
-      #   rerun = TRUE,
-      #   peakplot = FALSE,
-      #   datastyle = "tof",
-      #   dimension1 = TRUE,
-      #   path = path
-      # )
+    # cat(crayon::green("LOESS normalization...\n"))
+    # SXTloessNor(
+    #   sample = sample,
+    #   QC = qc,
+    #   tags = tags,
+    #   sample.order = sample.order,
+    #   QC.order = qc.order,
+    #   optimization = optimization,
+    #   begin = begin,
+    #   end = end,
+    #   step = step,
+    #   rerun = TRUE,
+    #   peakplot = FALSE,
+    #   datastyle = "tof",
+    #   dimension1 = TRUE,
+    #   path = path
+    # )
 
 
     # if (normalization.method == "svr") {
-      cat(crayon::green("SVR normalization...\n"))
-      SXTsvrNor(
-        sample = sample,
-        QC = qc,
-        tags = tags,
-        sample.order = sample.order,
-        QC.order = qc.order,
-        multiple = multiple,
-        path = path,
-        rerun = TRUE,
-        peakplot = FALSE,
-        datastyle = "tof",
-        dimension1 = TRUE,
-        threads = threads
-      )
+    cat(crayon::green("SVR normalization...\n"))
+    SXTsvrNor(
+      sample = sample,
+      QC = qc,
+      tags = tags,
+      sample.order = sample.order,
+      QC.order = qc.order,
+      multiple = multiple,
+      path = path,
+      rerun = TRUE,
+      peakplot = FALSE,
+      datastyle = "tof",
+      dimension1 = TRUE,
+      threads = threads
+    )
     # }
     # options(warn = 0)
-      cat(crayon::bgYellow("All done!\n"))
+    cat(crayon::bgYellow("All done!\n"))
   }
 )
 

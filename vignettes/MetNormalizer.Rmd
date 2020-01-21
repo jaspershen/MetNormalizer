@@ -64,15 +64,12 @@ new.path <- file.path("./MetNormalizer")
 ## Run `MetNormalizer`
 
 ```{r, cache=TRUE, eval=TRUE, warning=TRUE}
-MetNormalizer(
+metNor(
   ms1.data.name = "data.csv",
   sample.info.name = "sample.info.csv",
   minfrac.qc = 0,
   minfrac.sample = 0,
   optimization = TRUE,
-  begin = 0.5,
-  end = 1,
-  step = 0.2,
   multiple = 5,
   threads = 4,
   path = new.path

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • MetNormalizer</title>
+<title>metNor — metNor • MetNormalizer</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="metNor — metNor" />
+<meta property="og:description" content="Normalize data using different normalization methods." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -70,7 +72,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -185,78 +187,78 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>metNor</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/MetNormalizer/blob/master/R/metNor.R'><code>R/metNor.R</code></a></small>
+    <div class="hidden name"><code>metNor.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Normalize data using different normalization methods.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>metNor</span>(
+  <span class='kw'>ms1.data.name</span> <span class='kw'>=</span> <span class='st'>"data.csv"</span>,
+  <span class='kw'>sample.info.name</span> <span class='kw'>=</span> <span class='st'>"sample.info.csv"</span>,
+  <span class='kw'>minfrac.qc</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>minfrac.sample</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>optimization</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>
+)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="checkData.html">checkData()</a></code> </p>
-        </td>
-        <td><p>checkData</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="compare_rsd.html">compare_rsd()</a></code> </p>
-        </td>
-        <td><p>compare_rsd</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cvMSE.html">cvMSE()</a></code> </p>
-        </td>
-        <td><p>cvMSE</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="metNor.html">metNor()</a></code> </p>
-        </td>
-        <td><p>metNor</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="peak_plot.html">peak_plot()</a></code> </p>
-        </td>
-        <td><p>peak_plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="svr_function.html">svr_function()</a></code> </p>
-        </td>
-        <td><p>svr_function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SXTsvrNor.html">SXTsvrNor()</a></code> </p>
-        </td>
-        <td><p>SXTsvrNor</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ms1.data.name</th>
+      <td><p>MS1 peak table name. Default is "data.csv".</p></td>
+    </tr>
+    <tr>
+      <th>sample.info.name</th>
+      <td><p>sample.info name. Default is "sample.info.csv"</p></td>
+    </tr>
+    <tr>
+      <th>minfrac.qc</th>
+      <td><p>Default is 0.</p></td>
+    </tr>
+    <tr>
+      <th>minfrac.sample</th>
+      <td><p>Default is 0.</p></td>
+    </tr>
+    <tr>
+      <th>optimization</th>
+      <td><p>Parameter optimization or not?.Default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>multiple</th>
+      <td><p>If multiple = 1, the svr will be built using injection order.
+If multiple &gt;= 2, the svr is built using top mutiple peaks correlated peaks.
+For tof data, default is 5, for mrm data, default is 1.</p></td>
+    </tr>
+    <tr>
+      <th>threads</th>
+      <td><p>Number of thread.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Directory</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Xiaotao Shen
+<a href='mailto:shenxt@sioc.ac.cn'>shenxt@sioc.ac.cn</a></p>
   </div>
 </div>
 
