@@ -2,7 +2,7 @@ url: https://jaspershen.github.io/MetNormalizer/
 
 
 home:
-  strip_header: true
+  strip_header: false
   title: MetNormalizer
   links:
   - text: Find me
