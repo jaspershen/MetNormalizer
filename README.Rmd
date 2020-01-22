@@ -8,11 +8,28 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  warning = FALSE,
   fig.path = "man/figures/"
 )
 ```
 
+```{r echo=FALSE, results="hide", message=FALSE}
+library("badger")
+```
+
 # MetNormalizer <img src="man/figures/logo.png" align="right" alt="" width="120" />
+
+```{r, echo = FALSE, results='asis'}
+cat(
+	badge_cran_release("MetNormalizer", "green"),
+	badge_code_size(ref = "jaspershen/MetNormalizer"),
+	badge_dependencies(),
+	badge_lifecycle()
+	# badge_cran_download("badger", "grand-total", "green"),
+	# badge_cran_download("badger", "last-month", "green"),
+	# badge_cran_download("badger", "last-week", "green")
+)
+```
 
 # Installation
 
@@ -20,7 +37,7 @@ knitr::opts_chunk$set(
 
 You can install `MetNormalizer` from [Github](https://github.com/jaspershen/MetNormalizer).
 
-```
+```{r,eval=FALSE,warning=FALSE, R.options=""}
 # Install `MetNormalizer` from GitHub
 if(!require(devtools)){
 install.packages("devtools")
@@ -40,7 +57,7 @@ devtools::install_github("jaspershen/demoData")
 
 ## Demo data
 
-```
+```{r,eval=FALSE,warning=FALSE, R.options=""}
 library(demoData)
 library(MetNormalizer)
 path <- system.file("MetNormalizer", package = "demoData")
@@ -50,7 +67,7 @@ new.path <- file.path("./MetNormalizer")
 
 ## Run `MetNormalizer`
 
-```
+```{r,eval=FALSE,warning=FALSE, R.options=""}
 metNor(
   ms1.data.name = "data.csv",
   sample.info.name = "sample.info.csv",
