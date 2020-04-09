@@ -31,11 +31,15 @@ setGeneric(
     ##check data
 
     cat(crayon::green("Checking data...\n"))
-    checkData(data = ms1.data.name,
+    check_result <- checkData(data = ms1.data.name,
               sample.info = sample.info.name,
               path = path)
 
-    dir.create(path)
+    if(any(as.numeric(check_result[,"Error"]) > 0)){
+      stop("Error in your data or sample information.\n")
+    }
+
+    dir.create(path, showWarnings = FALSE)
 
     cat(crayon::green("Reading data...\n"))
     data <- readr::read_csv(file.path(path, "data.csv"),
@@ -100,9 +104,9 @@ setGeneric(
 
 
     if(length(remain.idx) > 0){
-      sample <- sample[remain.idx,]
-      qc <- qc[remain.idx,]
-      tags <- tags[remain.idx,]
+      sample <- sample[remain.idx,, drop = FALSE]
+      qc <- qc[remain.idx,, drop = FALSE]
+      tags <- tags[remain.idx,, drop = FALSE]
     }
 
     sample <- t(sample)
@@ -150,7 +154,7 @@ setGeneric(
     )
     # }
     # options(warn = 0)
-    cat(crayon::bgYellow("All done!\n"))
+    cat(crayon::bgRed("All done!\n"))
   }
 )
 

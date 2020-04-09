@@ -30,7 +30,7 @@ setGeneric(
                       progress = TRUE)
     sample.info <- as.data.frame(sample.info)
 
-    ##check data, NA or space
+    ##check data, NA or space or infinite
     if (sum(is.na(data)) > 0) {
       cat("Error: There are", sum(is.na(data)), "NAs in you data.\n")
       data.record <- c(data.record, "Error")
@@ -44,6 +44,16 @@ setGeneric(
       data.record <- c(data.record, "Error")
     } else{
       # cat("OK: There are no spaces in you data.\n")
+      data.record <- c(data.record, "OK")
+    }
+
+    infinite_num <- apply(data, 2, function(x) sum(is.infinite(x))) %>% sum()
+
+    if (infinite_num > 0) {
+      cat("Error: There are", infinite_num, "infinite in you data.\n")
+      data.record <- c(data.record, "Error")
+    } else{
+      # cat("OK: There are no infinite in you data.\n")
       data.record <- c(data.record, "OK")
     }
 

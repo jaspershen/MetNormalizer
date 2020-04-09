@@ -41,13 +41,13 @@ setGeneric(
     if (is.null(path)) {
       path <- getwd()
     } else{
-      dir.create(path)
+      dir.create(path, showWarnings = FALSE)
     }
 
     output_path <-
       file.path(path, "svr_normalization_result")
 
-    dir.create(output_path)
+    dir.create(output_path, showWarnings = FALSE)
 
     if (!rerun) {
       cat("Use previous normalization data\n")
@@ -132,6 +132,7 @@ setGeneric(
 
     #generate all peaks plot
 
+
     if (peakplot) {
       cat(crayon::green("Drawing peak plots...\n"))
 
@@ -162,6 +163,7 @@ setGeneric(
 
 
     ##generate some statistics information
+
     compare_rsd(
       sample.rsd = sample.rsd,
       sample.nor.rsd = sample.nor.rsd,
@@ -207,6 +209,48 @@ setGeneric(
     QC <- QC[, index, drop = FALSE]
     # cat("SVR normalization is finished: %\n")
     data.order <- c(sample.order, QC.order)
+
+    ##bug fix
+    # for(i in 1:ncol(sample)){
+    #   cat(i, " ")
+    #   if (multiple != 1) {
+    #     correlation <-
+    #       abs(cor(x = rbind(sample, QC)[, i], y = rbind(sample, QC))[1, ])
+    #     cor.peak <-
+    #       match(names(sort(correlation, decreasing = TRUE)[1:6][-1]),
+    #             names(correlation))
+    #     rm(list = "correlation")
+    #     svr.reg <- e1071::svm(QC[, cor.peak], QC[, i])
+    #   } else{
+    #     svr.reg <- e1071::svm(unlist(QC[, i]) ~ QC.order)
+    #   }
+    #
+    #   predict.QC <- summary(svr.reg)$fitted
+    #   QC.nor1 <- QC[, i] / predict.QC
+    #
+    #   #if the predict value is 0, then set the ratio to 0
+    #   QC.nor1[is.nan(unlist(QC.nor1))] <- 0
+    #   QC.nor1[is.infinite(unlist(QC.nor1))] <- 0
+    #   QC.nor1[is.na(unlist(QC.nor1))] <- 0
+    #   QC.nor1[which(unlist(QC.nor1) < 0)] <- 0
+    #
+    #   if (multiple != 1) {
+    #     predict.sample <- predict(svr.reg, sample[, cor.peak])
+    #   } else{
+    #     predict.sample <-
+    #       predict(svr.reg, data.frame(QC.order = c(sample.order)))
+    #   }
+    #
+    #   sample.nor1 <- sample[, i] / predict.sample
+    #   sample.nor1[is.nan(unlist(sample.nor1))] <- 0
+    #   sample.nor1[is.infinite(unlist(sample.nor1))] <- 0
+    #   sample.nor1[is.na(unlist(sample.nor1))] <- 0
+    #   sample.nor1[which(unlist(sample.nor1) < 0)] <- 0
+    #
+    #   # return(list(sample.nor1, QC.nor1))
+    # }
+
+
 
     data.nor <- lapply(c(1:ncol(sample)), function(i) {
       if (multiple != 1) {
