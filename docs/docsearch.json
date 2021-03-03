@@ -1,5 +1,5 @@
 {
-  "index_name": "metidentify",
+  "index_name": "metnormalizer",
   "start_urls": [
     {
       "url": "https://jaspershen.github.io/MetNormalizer//index.html",
@@ -74,7 +74,7 @@
         "selector": ".contents h2, .contents h3",
         "default_value": "Context"
       },
-      "text": ".contents p, .contents li, .tempate-article .contents .pre"
+      "text": ".contents p, .contents li"
     }
   },
   "selectors_exclude": [

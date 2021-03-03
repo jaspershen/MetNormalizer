@@ -1,31 +1,23 @@
 ---
-title: "Contact"
-output: 
+title: "Contact us"
+# author:
+# - name: Xiaotao Shen PhD (https://www.shenxt.info/)
+# - affiliation: School of Medicine, Stanford University
+date: "Created on 2021-02-28 and updated on `r Sys.Date()`"
+output:
   html_document:
+    df_print: paged
+    toc: false
+  pdf_document:
     toc: false
 pkgdown:
-  as_is: true
-# author:
-#   - name: "Meng Wang, Xiaotao Shen, Xin Zhou"
-#     url: http://shenxt.info/
-#     affiliation: Stanford University
-#     affiliation_url: http://shenxt.info/
-# output: radix::radix_article
-
-# - name: Xiaotao Shen (https://www.shenxt.info/)
-#   url: http://shenxt.info/
-# - name: Meng Wang
-# - name: Xin Zhou
-# - affiliation: School of Medicine, Stanford University
-# date: "`r Sys.Date()`"
-# output:
-#   html_document:
-#     df_print: paged
-#     toc: no
-#   pdf_document:
-#     toc: no
-# vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
-#   \n"
+  as_is: false
+vignette: >
+  %\VignetteIndexEntry{contact_us}
+  %\VignettePackage{metID}
+  % \VignetteEngine{knitr::rmarkdown}
+  % \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE, echo=FALSE}

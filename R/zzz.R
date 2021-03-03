@@ -32,7 +32,7 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     cat(crayon::green(
-      "MetDNA version 1.3.02.
+      "MetNormalizer version 1.3.02.
 More information can be found in http://rpubs.com/Jasper/metnormalizer-instruction.
 If you have any questions, please send email to shenxt1990@163.com.
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu (jiangzhu@sioc.ac.cn).

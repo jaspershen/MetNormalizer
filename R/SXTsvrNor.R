@@ -14,10 +14,6 @@
 #' @param datastyle datastyle
 #' @param dimension1 dimension1
 #' @param threads threads
-#' @import crayon
-#' @import tidyverse
-#' @import BiocParallel
-#' @import e1071
 #' @importFrom magrittr %>%
 
 
@@ -58,7 +54,9 @@ setGeneric(
       svr.data <- BiocParallel::bplapply(
         ichunks,
         FUN = svr_function,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
+        # BPPARAM = BiocParallel::SnowParam(workers = threads,
+        #                                   progressbar = TRUE),
+        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
                                           progressbar = TRUE),
         sample = sample,
         QC = QC,
@@ -144,8 +142,10 @@ setGeneric(
       BiocParallel::bplapply(
         ichunks,
         FUN = peak_plot,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                          progressbar = TRUE),
+        # BPPARAM = BiocParallel::SnowParam(workers = threads,
+        #                                   progressbar = TRUE),
+        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                               progressbar = TRUE),
         sample = sample,
         sample.nor = sample.nor,
         QC = QC,

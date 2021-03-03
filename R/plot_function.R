@@ -16,12 +16,6 @@
 #' @param QC.rsd QC.rsd
 #' @param sample.nor.rsd sample.nor.rsd
 #' @param QC.nor.rsd QC.nor.rsd
-#' @import crayon
-#' @import tidyverse
-#' @import BiocParallel
-#' @import e1071
-#' @import ggplot2
-#' @import patchwork
 #' @importFrom magrittr %>%
 
 

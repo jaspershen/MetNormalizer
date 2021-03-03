@@ -1,3 +1,5 @@
+destination: docs
+
 url: https://jaspershen.github.io/MetNormalizer/
 
 
@@ -17,12 +19,13 @@ template:
   params:
     docsearch:
       api_key: 2f09495997a50f5008bc92fa73c5552d
-      index_name: metidentify
-    bootswatch: darkly
+      index_name: metnormalizer
+    bootswatch: flatly
     ganalytics: UA-000000-01
 
 navbar:
-  type: inverse
+  title: "sparklyr"
+  # type: inverse
   structure:
     left: [home, references, articles, news, contact]
     right: [github, twitter]
